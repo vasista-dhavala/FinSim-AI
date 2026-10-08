@@ -32,10 +32,6 @@ const groups = [
     ],
   },
   {
-    label: "BANKING",
-    items: [["Banking", "/banking"]],
-  },
-  {
     label: "PERSONAL FINANCE",
     items: [
       ["Savings", "/personal-finance/savings"],
