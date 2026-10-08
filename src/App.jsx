@@ -112,7 +112,7 @@ export default function App() {
         </Routes>
       </ErrorBoundary>
 
-      {pathname !== "/" && <Footer />}
+      <Footer />
     </>
   );
 }
