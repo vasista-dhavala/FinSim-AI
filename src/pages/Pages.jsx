@@ -5,7 +5,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { useState } from "react";
-import StockChart from "../components/StockChart.jsx";
+import StockChart, { Spark } from "../components/StockChart.jsx";
 import {
   movers,
   lessons,
@@ -21,36 +21,8 @@ import {
   resetPortfolio,
   livePrice,
 } from "../data/store.js";
-const inr = (n) =>
-    (n < 0 ? "-" : "") +
-    "₹" +
-    Math.abs(Number(n)).toLocaleString("en-IN", { maximumFractionDigits: 2 }),
-  sgn = (n) => (n >= 0 ? "+" : "") + inr(n);
-const Demo = () => (
-  <p className="tiny">
-    Simulated demo data. No real money, brokerage or live market feed.
-  </p>
-);
-const Head = ({ t, s }) => (
-  <>
-    <h1>{t}</h1>
-    <p className="mu">{s}</p>
-  </>
-);
-const Stat = ({ l, v, c }) => (
-  <div className="card">
-    <div className="tiny">{l}</div>
-    <div className="big" style={{ color: c }}>
-      {v}
-    </div>
-  </div>
-);
-const Chg = ({ c }) => (
-  <span className={c >= 0 ? "up" : "dn"}>
-    {c >= 0 ? "+" : ""}
-    {c.toFixed(2)}%
-  </span>
-);
+import { inr, sgn, Chg, Demo, Head, Stat } from "../utils/helpers.jsx";
+import "./Pages.css";
 const Table = ({ rows }) => (
   <div className="card">
     {rows.map((r) => (
@@ -173,7 +145,10 @@ export function Simulation() {
   const go = () => {
     const e = trade(side, s, qty, p);
     setErr(e);
-    if (!e) setOk(false);
+    if (!e) {
+      setOk(false);
+      setQty(1);
+    }
   };
   return (
     <main className="wrap page">

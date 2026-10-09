@@ -1,0 +1,480 @@
+/* =========================================================
+   GLOBE CONTAINER
+   ========================================================= */
+
+.gl {
+  grid-column: 2;
+  grid-row: 1/3;
+  position: relative;
+  width: min(100%, calc(100svh - 120px));
+  aspect-ratio: 1;
+  justify-self: center;
+  overscroll-behavior: contain;
+  overflow: visible;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.gl:before {
+  content: "";
+  position: absolute;
+  inset: 7%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 41, 59, 0.08), transparent 67%);
+  filter: blur(14px);
+  pointer-events: none;
+}
+.gl canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  outline: none;
+}
+.gl svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* =========================================================
+   MARKET MARKERS (legacy)
+   ========================================================= */
+
+.mk {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.55em 0.85em;
+  border-radius: 0.8em;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--bd);
+  box-shadow: var(--sh);
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.mk i {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-size: 0.9em;
+}
+.mk small {
+  display: block;
+  font-weight: 500;
+  font-size: 0.82em;
+  color: var(--mu);
+}
+.mk b {
+  font-size: 0.85em;
+  color: var(--gr);
+}
+.status {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--mu);
+  flex-wrap: wrap;
+}
+.status span:before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c);
+  margin-right: 7px;
+}
+
+/* =========================================================
+   GLOBE STOCK CARD LAYER
+   ========================================================= */
+
+.globe-stock-layer {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* =========================================================
+   STOCK CARD
+   ========================================================= */
+
+.globe-stock-card {
+  position: absolute;
+
+  min-width: 172px;
+  max-width: 190px;
+
+  padding: 9px 11px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  border-radius: 12px;
+
+  background: rgba(7, 18, 43, 0.88);
+
+  color: #e5edff;
+
+  box-shadow:
+    0 10px 30px rgba(2, 8, 23, 0.28),
+    0 0 20px rgba(37, 99, 235, 0.08);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  pointer-events: auto;
+  cursor: pointer;
+
+  transform-origin: center center;
+
+  transition:
+    opacity 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+
+  will-change: left, top, opacity;
+}
+
+/* Country card */
+.globe-stock-card.is-country-card {
+  min-width: 165px;
+}
+
+/* Expanded stock card */
+.globe-stock-card.is-focused {
+  min-width: 180px;
+
+  background: rgba(8, 20, 48, 0.94);
+
+  border-color: rgba(129, 140, 248, 0.55);
+
+  box-shadow:
+    0 14px 38px rgba(2, 8, 23, 0.38),
+    0 0 28px rgba(99, 102, 241, 0.14);
+}
+
+/* Hover */
+.globe-stock-card:hover {
+  border-color: rgba(96, 165, 250, 0.65);
+
+  background: rgba(9, 23, 53, 0.96);
+
+  box-shadow:
+    0 16px 40px rgba(2, 8, 23, 0.42),
+    0 0 24px rgba(59, 130, 246, 0.15);
+}
+
+/*
+IMPORTANT:
+Do not add transform here.
+Globe.jsx controls transform because
+the cards must remain attached to the 3D globe nodes.
+*/
+
+/* =========================================================
+   STOCK ICON
+   ========================================================= */
+
+.globe-stock-icon {
+  width: 30px;
+  height: 30px;
+
+  flex: 0 0 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.9),
+    rgba(124, 58, 237, 0.9)
+  );
+
+  color: #fff;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: -0.2px;
+
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.22);
+}
+
+/* =========================================================
+   STOCK INFORMATION
+   ========================================================= */
+
+.globe-stock-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.globe-stock-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  line-height: 1;
+}
+
+.globe-stock-top strong {
+  color: #f8fafc;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.15px;
+}
+
+.globe-stock-name {
+  margin-top: 4px;
+
+  overflow: hidden;
+
+  color: #94a3b8;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  line-height: 1.25;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.globe-stock-meta {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 7px;
+
+  margin-top: 5px;
+
+  color: #cbd5e1;
+
+  font-size: 9px;
+}
+
+.globe-stock-meta span:last-child {
+  overflow: hidden;
+
+  color: #64748b;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   PRICE CHANGE
+   ========================================================= */
+
+.globe-stock-up {
+  color: #4ade80;
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.globe-stock-down {
+  color: #fb7185;
+
+  font-size: 9px;
+  font-weight: 800;
+}
+
+/* =========================================================
+   ZOOM INDICATOR
+   ========================================================= */
+
+.globe-zoom-indicator {
+  position: absolute;
+
+  right: 18px;
+  bottom: 18px;
+
+  padding: 6px 10px;
+
+  border: 1px solid rgba(148, 163, 184, 0.18);
+
+  border-radius: 999px;
+
+  background: rgba(5, 15, 38, 0.72);
+
+  color: #cbd5e1;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.4px;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   DARK — GLOBE
+   ========================================================= */
+
+body.dark-theme .mk {
+  background: rgba(17, 24, 39, 0.94);
+  border-color: #334155;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-theme .mk small {
+  color: #94a3b8;
+}
+
+/* =========================================================
+   RESPONSIVE — GLOBE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .gl {
+    grid-column: 1;
+    grid-row: 2;
+    width: min(100%, 520px);
+    min-height: 430px;
+  }
+
+  .globe-stock-card {
+    min-width: 145px;
+    max-width: 160px;
+
+    padding: 7px 8px;
+
+    gap: 7px;
+
+    border-radius: 10px;
+  }
+
+  .globe-stock-card.is-country-card {
+    min-width: 140px;
+  }
+
+  .globe-stock-card.is-focused {
+    min-width: 150px;
+  }
+
+  .globe-stock-icon {
+    width: 26px;
+    height: 26px;
+
+    flex-basis: 26px;
+
+    border-radius: 7px;
+
+    font-size: 8px;
+  }
+
+  .globe-stock-top strong {
+    font-size: 10px;
+  }
+
+  .globe-stock-name {
+    font-size: 8px;
+  }
+
+  .globe-stock-meta {
+    font-size: 8px;
+  }
+
+  .globe-stock-up,
+  .globe-stock-down {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gl {
+    min-height: 350px;
+  }
+
+  .globe-stock-card {
+    min-width: 125px;
+    max-width: 140px;
+
+    padding: 6px 7px;
+  }
+
+  .globe-stock-card.is-country-card {
+    min-width: 120px;
+  }
+
+  .globe-stock-card.is-focused {
+    min-width: 130px;
+  }
+
+  .globe-stock-icon {
+    width: 23px;
+    height: 23px;
+
+    flex-basis: 23px;
+
+    font-size: 7px;
+  }
+
+  .globe-stock-top strong {
+    font-size: 9px;
+  }
+
+  .globe-stock-name {
+    max-width: 80px;
+
+    font-size: 7px;
+  }
+
+  .globe-stock-meta {
+    font-size: 7px;
+  }
+
+  .globe-stock-up,
+  .globe-stock-down {
+    font-size: 7px;
+  }
+
+  .globe-zoom-indicator {
+    right: 10px;
+    bottom: 10px;
+
+    padding: 5px 8px;
+
+    font-size: 9px;
+  }
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  .globe-stock-card {
+    transition: none;
+  }
+}

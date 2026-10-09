@@ -1,0 +1,48 @@
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.foot {
+  border-top: 1px solid var(--bd);
+  background: #fff;
+  padding: 36px 0;
+  margin-top: 40px;
+}
+.foot .wrap {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 20px;
+  font-size: 13px;
+}
+.foot a {
+  display: block;
+  color: var(--mu);
+  margin: 6px 0;
+}
+
+/* =========================================================
+   DARK — FOOTER
+   ========================================================= */
+
+body.dark-theme .foot {
+  background: #0b111d;
+  border-color: #263449;
+}
+
+body.dark-theme .foot a {
+  color: #94a3b8;
+}
+
+body.dark-theme .foot a:hover {
+  color: #60a5fa;
+}
+
+/* =========================================================
+   RESPONSIVE — FOOTER
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .foot .wrap {
+    grid-template-columns: 1fr 1fr;
+  }
+}

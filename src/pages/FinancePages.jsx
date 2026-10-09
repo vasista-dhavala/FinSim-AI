@@ -18,19 +18,8 @@ import {
 
 import StockChart, { Spark } from "../components/StockChart.jsx";
 import { stocks, indices, popular } from "../data/data.js";
-
-const inr = (n) =>
-  "₹" +
-  Number(n).toLocaleString("en-IN", {
-    maximumFractionDigits: 2,
-  });
-
-const Chg = ({ c }) => (
-  <span className={c >= 0 ? "up" : "dn"}>
-    {c >= 0 ? "+" : ""}
-    {c.toFixed(2)}%
-  </span>
-);
+import { inr, Chg } from "../utils/helpers.jsx";
+import "./FinancePages.css";
 
 const Demo = () => (
   <p className="tiny">
