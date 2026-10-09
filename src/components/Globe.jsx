@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import ErrorBoundary from "./ErrorBoundary.jsx";
 import { LAND, LW, LH } from "../data/landMask.js";
+import "./Globe.css";
 
 /* =========================================================
    LAND MASK

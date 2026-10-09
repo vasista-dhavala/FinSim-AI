@@ -11,6 +11,7 @@ import {
 import Globe from "../components/Globe.jsx";
 import StockChart, { Spark } from "../components/StockChart.jsx";
 import { movers } from "../data/data.js";
+import "./Home.css";
 const Cards = [
   [
     "01",

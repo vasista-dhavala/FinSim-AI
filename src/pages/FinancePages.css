@@ -1,0 +1,289 @@
+/* =========================================================
+   FINANCE PAGES
+   ========================================================= */
+
+.finance-page-hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  margin-bottom: 18px;
+  border: 1px solid var(--bd);
+  border-radius: 18px;
+  background:
+    radial-gradient(
+      500px 220px at 100% 0%,
+      rgba(37, 99, 235, 0.12),
+      transparent 70%
+    ),
+    #fff;
+  box-shadow: var(--sh);
+}
+
+.finance-hero-icon {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
+}
+
+.finance-eyebrow {
+  margin-bottom: 4px;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.finance-page-hero h1 {
+  margin-bottom: 5px;
+}
+
+.finance-page-hero p {
+  max-width: 720px;
+  color: var(--mu);
+  line-height: 1.65;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin: 28px 0 14px;
+}
+
+/* News grid */
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0 26px;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  border-color: #b9c8e2;
+  box-shadow: 0 15px 35px rgba(15, 27, 51, 0.09);
+}
+
+.news-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.news-card h3 {
+  font-size: 17px;
+  line-height: 1.35;
+  margin-bottom: 9px;
+}
+
+.news-card p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.news-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 18px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Bottom CTA */
+
+.finance-bottom-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 28px 0 10px;
+  padding: 25px 28px;
+  border-radius: 16px;
+  color: #fff;
+  background: linear-gradient(100deg, #1d4ed8, #0ea5e9);
+  box-shadow: var(--sh);
+}
+
+.finance-bottom-cta h3 {
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+
+.finance-bottom-cta p {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Investing pages */
+
+.investment-stock-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.investment-stock-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.investment-content {
+  margin-top: 18px;
+}
+
+.finance-list {
+  display: grid;
+  gap: 9px;
+  padding-left: 20px;
+  margin-top: 16px;
+  color: var(--mu);
+  font-size: 13px;
+}
+
+.finance-list li::marker {
+  color: #2563eb;
+}
+
+.finance-info-banner {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 18px;
+  padding: 18px 20px;
+  border: 1px solid #dbe7ff;
+  border-radius: 14px;
+  background: #f4f8ff;
+  color: #2563eb;
+}
+
+.finance-info-banner b {
+  display: block;
+  color: var(--tx);
+  margin-bottom: 3px;
+}
+
+.finance-info-banner p {
+  color: var(--mu);
+  font-size: 13px;
+}
+
+.finance-plan-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  background: #e8f5ec;
+  color: #16a34a;
+}
+
+.financial-plan-preview {
+  background:
+    radial-gradient(
+      400px 240px at 100% 0%,
+      rgba(22, 163, 74, 0.08),
+      transparent 70%
+    ),
+    #fff;
+}
+
+/* =========================================================
+   DARK — FINANCE PAGES
+   ========================================================= */
+
+body.dark-theme .finance-page-hero {
+  background:
+    radial-gradient(
+      500px 220px at 100% 0%,
+      rgba(37, 99, 235, 0.16),
+      transparent 70%
+    ),
+    #111827;
+
+  border-color: var(--bd);
+}
+
+body.dark-theme .finance-info-banner {
+  background: #101d31;
+  border-color: #263d60;
+}
+
+body.dark-theme .finance-bottom-cta {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .news-card:hover {
+  border-color: #40516d;
+}
+
+/* =========================================================
+   RESPONSIVE — FINANCE PAGES
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .finance-page-hero {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .finance-page-hero {
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .finance-hero-icon {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+
+  .finance-page-hero h1 {
+    font-size: 28px;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .finance-bottom-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  .news-card {
+    transition: none !important;
+  }
+}
